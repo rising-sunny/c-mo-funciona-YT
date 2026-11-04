@@ -120,7 +120,7 @@ class Vise:
             labels.append(dict(text=f"F = {S.F_APPLIED:.0f} N", p=tuple(tip), color="force", alpha=a, dx=18, dy=-6))
             mid = axis_pt + (hand_end - axis_pt) * 0.5
             labels.append(dict(text=f"r = {S.R_HANDLE:.3f} m", p=tuple(mid), color="white", alpha=a, dx=-12, dy=26, anchor="r"))
-            labels.append(dict(text="τ", p=tuple(axis_pt + Vector((0.025, 0.052 * math.cos(phi - math.pi / 2), 0.052 * math.sin(phi - math.pi / 2)))), color="torque", alpha=a, dx=0, dy=0))
+            labels.append(dict(text="τ", p=tuple(axis_pt + Vector((0.025, 0.052 * math.cos(phi - math.pi / 2), 0.052 * math.sin(phi - math.pi / 2)))), color="torque", alpha=a, dx=-30, dy=-50))
 
         # --- Escenas 3 y 4: desplazamiento Δx medido desde el inicio de la escena ---
         for si in ("thread", "close"):

@@ -22,6 +22,7 @@ def main():
         p.add_argument("--frames", default=None)
         p.add_argument("--only", default=None)
         p.add_argument("--no-render", action="store_true")
+        p.add_argument("--seconds", type=float, default=None, help="limita la duración (muestras cortas)")
     a = ap.parse_args()
     if a.cmd == "setup":
         sys.exit(subprocess.call([os.path.join(ROOT, "scripts/setup_env.sh")]))
@@ -49,9 +50,9 @@ def main():
 
     d = os.path.join(base, "frames")
     if a.cmd == "render" and not a.no_render:
-        run_blender(a.episode, a.preset, d, (["--frames", a.frames] if a.frames else []))
+        run_blender(a.episode, a.preset, d, (["--frames", a.frames] if a.frames else ([f"--frames", f"0:{int(a.seconds * pr['fps'])}"] if a.seconds else [])))
     ui = json.load(open(os.path.join(d, "ui.json")))
-    total = int(round(spec.total_duration() * pr["fps"]))
+    total = int(round((a.seconds or spec.total_duration()) * pr["fps"]))
     out = os.path.join(base, f"{a.episode}_{a.preset}.mp4")
 
     def frames():
