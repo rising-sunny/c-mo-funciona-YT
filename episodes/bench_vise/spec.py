@@ -18,35 +18,35 @@ def C(az, el, dist, target, focal):
 
 
 SCENES = [
-    dict(id="hook", dur=4.5, kicker="01 / THE QUESTION",
+    dict(id="hook", say="How can one tiny twist crush a solid block of metal? Let's open this vise up!", dur=4.5, kicker="01 / THE QUESTION",
          title="How can one hand\ncrush this tight?",
          caption="A bench vise turns a gentle twist into a huge squeeze.", eq=None, sub=None,
          cam=(C(20, 24, 0.52, (0.07, 0, 0.055), 45), C(58, 20, 0.42, (0.08, 0, 0.06), 50))),
-    dict(id="face", dur=4.5, kicker="02 / THE GRIP FACES",
+    dict(id="face", say='First, the jaws. See that waffle pattern? Pure grip.', dur=4.0, kicker="02 / THE GRIP FACES",
          title="Textured jaws\nbite the workpiece",
          caption="A cross-hatched surface resists slipping.", eq=None, sub=None,
          cam=(C(60, 46, 0.34, (0.0, 0.0, 0.072), 60), C(82, 38, 0.26, (0.0, 0.0, 0.074), 75))),
-    dict(id="torque", dur=7.5, kicker="03 / FORCE BECOMES TORQUE",
+    dict(id="torque", say='Now the handle. Push far from the center, and you make torque. Twenty newtons, times sixty-five millimeters... one point three newton-meters!', dur=7.5, kicker="03 / FORCE BECOMES TORQUE",
          title="A push at the\nhandle makes torque",
          caption="Push perpendicular to the handle, far from the axis.",
          eq="τ = r · F", sub=f"r = {R_HANDLE:.3f} m   ·   F = {F_APPLIED:.0f} N   →   τ = {TAU:.1f} N·m",
          cam=(C(62, 16, 0.58, (0.22, 0, 0.035), 55), C(84, 12, 0.44, (0.235, 0, 0.04), 65))),
-    dict(id="thread", dur=7.0, kicker="04 / THREADS INTO MOTION",
+    dict(id="thread", say='Inside, a thread turns every spin into forward motion. One full turn? Exactly four millimeters.', dur=6.0, kicker="04 / THREADS INTO MOTION",
          title="The thread turns\nspin into travel",
          caption="One full turn pushes the screw forward by exactly one lead.",
          eq="Δx = L · n", sub=f"L = {LEAD*1000:.0f} mm per turn   →   1 turn = {LEAD*1000:.0f} mm",
          cam=(C(12, 28, 0.36, (0.13, 0, 0.055), 60), C(-22, 22, 0.27, (0.125, 0, 0.056), 75))),
-    dict(id="close", dur=6.5, kicker="05 / CLOSING THE GAP",
+    dict(id="close", say='Four turns later, the jaw has crossed sixteen millimeters. And... contact!', dur=5.6, kicker="05 / CLOSING THE GAP",
          title="The jaw glides in\nuntil it touches",
          caption="Four turns close the 16 mm gap to the workpiece.",
          eq="Δx = n · L", sub=f"4 turns × {LEAD*1000:.0f} mm = {TURNS_CONTACT*LEAD*1000:.0f} mm",
          cam=(C(30, 22, 0.40, (0.05, 0, 0.07), 60), C(10, 26, 0.30, (0.035, 0, 0.08), 70))),
-    dict(id="grip", dur=7.0, kicker="06 / SMALL TURNS, FIRM GRIP",
+    dict(id="grip", say='Now the force. Torque times two pi, divided by the lead. About two thousand newtons, from one hand! Real life loses some to friction, but still!', dur=7.0, kicker="06 / SMALL TURNS, FIRM GRIP",
          title="Tiny motion,\nenormous force",
          caption="Ideal model: no friction. Real clamping loses part to friction.",
          eq="F = 2π · τ / L", sub=f"2π × {TAU:.1f} N·m / {LEAD*1000:.0f} mm  ≈  {F_CLAMP/1000:.1f} kN",
          cam=(C(38, 24, 0.40, (0.04, 0, 0.085), 65), C(18, 20, 0.30, (0.02, 0, 0.09), 80))),
-    dict(id="outro", dur=5.5, kicker="07 / THE WHOLE STORY",
+    dict(id="outro", say='Twist in. Squeeze out. Follow for more machines, explained from the inside!', dur=5.0, kicker="07 / THE WHOLE STORY",
          title="Twist in.\nSqueeze out.",
          caption="Torque turns into travel, and travel into clamping force.",
          eq="τ → Δx → F", sub="idealized — real vises lose part of this to friction",
@@ -68,12 +68,17 @@ def end(name):
     return start(name) + SCENES[sid(name)]["dur"]
 
 
+def _at(name, frac):
+    return start(name) + frac * SCENES[sid(name)]["dur"]
+
+
 def _turn_keys():
-    return [(0.0, 0.0), (start("hook") + 1.5, 0.0), (end("hook"), 0.2),
+    """Vueltas n(t) ancladas a fracciones de cada plano (robusto a cambios de duración)."""
+    return [(0.0, 0.0), (_at("hook", 0.35), 0.0), (end("hook"), 0.2),
             (end("face"), 0.2),
-            (start("torque") + 1.2, 0.2), (end("torque") - 0.8, 1.2),
-            (start("thread") + 0.8, 1.2), (end("thread") - 0.8, 2.2),
-            (start("close") + 0.6, 2.2), (start("close") + 5.0, TURNS_CONTACT)]
+            (_at("torque", 0.25), 0.2), (_at("torque", 0.9), 1.2),
+            (_at("thread", 0.15), 1.2), (_at("thread", 0.9), 2.2),
+            (_at("close", 0.12), 2.2), (_at("close", 0.82), TURNS_CONTACT)]
 
 
 def total_duration():
@@ -127,3 +132,18 @@ def clamp_grow(t):
 
 def lead_adv(n):
     return ph.lead_advance(LEAD, n)
+
+
+def _apply_timing():
+    import json, os
+    path = os.path.join(os.path.dirname(__file__), "timing.json")
+    if os.path.exists(path):
+        t = json.load(open(path))
+        for sc in SCENES:
+            if sc["id"] in t:
+                sc["dur"] = t[sc["id"]]["dur"]
+                sc["lines"] = t[sc["id"]]["lines"]
+                sc["lead"] = t[sc["id"]]["lead"]
+
+
+_apply_timing()

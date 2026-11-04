@@ -287,7 +287,7 @@ class ArcArrow:
 
 
 # ------------------------- Escenario -------------------------
-def setup_stage(scene, w, h, samples, fps):
+def setup_stage(scene, w, h, samples, fps, bounces=6):
     r = scene.render
     r.engine = "CYCLES"
     r.resolution_x, r.resolution_y, r.resolution_percentage = w, h, 100
@@ -302,16 +302,23 @@ def setup_stage(scene, w, h, samples, fps):
     c.use_adaptive_sampling = True
     c.adaptive_threshold = 0.03
     c.use_denoising = True
-    c.max_bounces = 6
-    c.diffuse_bounces = 3
-    c.glossy_bounces = 5
-    c.transmission_bounces = 4
-    c.transparent_max_bounces = 6
+    c.denoiser = "OPENIMAGEDENOISE"
+    c.denoising_input_passes = "RGB_ALBEDO_NORMAL"
+    c.denoising_prefilter = "FAST"
+    bpy.context.view_layer.cycles.denoising_store_passes = True
+    c.max_bounces = bounces
+    c.diffuse_bounces = min(3, bounces)
+    c.glossy_bounces = bounces
+    c.transmission_bounces = 2
+    c.transparent_max_bounces = 4
+    c.use_animated_seed = False   # ruido fijo en pantalla: evita parpadeo entre fotogramas
+    c.seed = 7
     c.sample_clamp_indirect = 8
     scene.view_settings.view_transform = "Filmic"
     scene.view_settings.look = "Medium High Contrast"
     scene.view_settings.exposure = -1.2
     scene.render.threads_mode = "AUTO"
+    scene.render.use_persistent_data = True   # reutiliza BVH/escena entre fotogramas
 
     # Mundo de estudio (solo ilumina/refleja; el fondo es transparente)
     world = bpy.data.worlds.new("studio")

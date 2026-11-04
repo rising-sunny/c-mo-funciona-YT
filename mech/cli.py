@@ -15,6 +15,14 @@ def main():
     ap = argparse.ArgumentParser(prog="mech")
     sub = ap.add_subparsers(dest="cmd", required=True)
     sub.add_parser("setup")
+    pf = sub.add_parser("final")
+    pf.add_argument("episode")
+    pf.add_argument("--preset", default="final")
+    pf.add_argument("--seconds", type=float, default=None)
+    pn = sub.add_parser("narrate")
+    pn.add_argument("episode")
+    pn.add_argument("--voice", default="am_puck")
+    pn.add_argument("--speed", type=float, default=1.05)
     for name in ("render", "compose", "stills"):
         p = sub.add_parser(name)
         p.add_argument("episode")
@@ -28,8 +36,22 @@ def main():
         sys.exit(subprocess.call([os.path.join(ROOT, "scripts/setup_env.sh")]))
 
     sys.path.insert(0, ROOT)
-    from mech.compose import Composer, encode
     from mech.presets import PRESETS
+    if a.cmd == "final":
+        from mech import final
+        spec = importlib.import_module(f"episodes.{a.episode}.spec")
+        pr = PRESETS[a.preset]
+        d = os.path.join(ROOT, "out", a.episode, a.preset, "ui60")
+        if not os.path.exists(os.path.join(d, "ui.json")):
+            run_blender(a.episode, a.preset, d, ["--labels-only", "--ui-fps", str(pr.get("out_fps", pr["fps"]))])
+        print("vídeo:", final.build(spec, a.episode, ROOT, a.preset, a.seconds))
+        return
+    if a.cmd == "narrate":
+        from mech import narration
+        spec = importlib.import_module(f"episodes.{a.episode}.spec")
+        narration.build(spec, os.path.join(ROOT, "out", a.episode, "audio"), a.voice, a.speed)
+        return
+    from mech.compose import Composer, encode
     spec = importlib.import_module(f"episodes.{a.episode}.spec")
     pr = PRESETS[a.preset]
     base = os.path.join(ROOT, "out", a.episode, a.preset)

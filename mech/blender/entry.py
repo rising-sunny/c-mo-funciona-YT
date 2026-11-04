@@ -19,6 +19,8 @@ def main():
     ap.add_argument("--out", required=True)
     ap.add_argument("--frames", default=None, help="A:B (índices de fotograma, B excluido)")
     ap.add_argument("--only", default=None, help="stills: lista separada por comas, p.ej. s1,s4")
+    ap.add_argument("--labels-only", action="store_true", help="solo calcula etiquetas 2D (sin render)")
+    ap.add_argument("--ui-fps", type=int, default=60)
     ap.add_argument("--stills", action="store_true", help="un fotograma por escena para revisar")
     a = ap.parse_args(argv)
 
@@ -27,12 +29,18 @@ def main():
     scn = importlib.import_module(f"episodes.{a.episode}.scene")
 
     scene = kit.clear_scene()
-    cam = kit.setup_stage(scene, pr["w"], pr["h"], pr["samples"], pr["fps"])
+    cam = kit.setup_stage(scene, pr["w"], pr["h"], pr["samples"], pr["fps"], pr.get("bounces", 6))
     model = scn.Vise()
     model.build(scene, cam)
 
-    fps = pr["fps"]
+    fps = a.ui_fps if a.labels_only else pr["fps"]
     total = int(round(spec.total_duration() * fps))
+    if a.labels_only:
+        os.makedirs(a.out, exist_ok=True)
+        ui = {f"f_{i:05d}": model.apply(i / fps) for i in range(total)}
+        json.dump(ui, open(os.path.join(a.out, "ui.json"), "w"))
+        print("LABELS", len(ui), flush=True)
+        return
     if a.stills:
         times = {f"s{i}": spec.scene_start(i) + 0.8 * s["dur"] for i, s in enumerate(spec.SCENES)}
         jobs = [(n, t) for n, t in times.items() if not a.only or n in a.only.split(",")]

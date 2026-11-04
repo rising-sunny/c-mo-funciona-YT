@@ -2,6 +2,7 @@
 import importlib, json, os, subprocess
 from PIL import Image, ImageChops, ImageDraw, ImageFont, ImageFilter
 from mech.blender.palette import COL
+from mech.motion import Motion
 from mech.presets import PRESETS, REGION_Y
 
 FONT_DIR = "/usr/share/fonts/opentype/inter/"
@@ -37,7 +38,7 @@ class Composer:
         self.k = self.W / BASE[0]
         self.region = (0, int(REGION_Y * self.k))
         self.bg = self._background()
-        self.layers = [self._scene_layer(s) for s in spec.SCENES]
+        self.motion = Motion(spec, self.k, self.W)
         self.static = self._static_layer()
 
     def S(self, v):
@@ -95,11 +96,14 @@ class Composer:
         return "\n".join(out)
 
     def frame(self, t, render_png, labels):
+        return self.compose(t, Image.open(render_png).convert("RGBA"), labels)
+
+    def compose(self, t, r, labels):
+        """r: región 3D (RGBA con sombra en alfa, o RGB ya compuesta sobre el fondo)."""
         sp = self.spec
-        idx, ts = sp.scene_at(t)
-        dur = sp.SCENES[idx]["dur"]
         im = self.bg.copy()
-        r = Image.open(render_png).convert("RGBA")
+        sc = self.W / r.width           # escala render -> lienzo (para anclar etiquetas)
+        r = r.convert("RGBA")
         rw = self.W
         rh = int(round(r.height * rw / r.width))
         if r.size != (rw, rh):
@@ -112,15 +116,10 @@ class Composer:
         im.alpha_composite(r, (self.region[0], self.region[1]))
         im.alpha_composite(self.static)
 
-        a = smooth(ts / 0.5) * (1.0 if idx == len(sp.SCENES) - 1 else smooth((dur - ts) / 0.4))
-        layer = self.layers[idx].copy()
-        layer.putalpha(layer.getchannel("A").point(lambda v: int(v * a)))
-        # leve deslizamiento hacia arriba al entrar
-        im.alpha_composite(layer, (0, int(self.S(16) * (1 - smooth(ts / 0.5)))))
+        self.motion.draw(im, t)
 
         d = ImageDraw.Draw(im, "RGBA")
         lf = font("SemiBold", self.S(40))
-        sc = self.W / r.width
         for lb in labels:
             if "hud" in lb:
                 hf = font("SemiBold", self.S(34))
@@ -131,7 +130,7 @@ class Composer:
                 d.text((self.S(58), hy), lb["text"], font=hf, fill=col + (int(255 * lb["alpha"]),), anchor="lm")
                 continue
             x = lb["x"] * sc + self.region[0]
-            y = lb["y"] * (rh / PRESETS_H(r)) if False else lb["y"] * sc + self.region[1]
+            y = lb["y"] * sc + self.region[1]
             y = min(max(y, self.region[1] + self.S(130)), self.region[1] + rh - self.S(90))
             al = int(255 * lb["alpha"])
             col = tuple(int(COL[lb["color"]].lstrip("#")[i:i + 2], 16) for i in (0, 2, 4))
