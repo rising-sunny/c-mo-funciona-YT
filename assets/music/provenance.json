@@ -1,0 +1,12 @@
+{
+  "title": "Monkeys Spinning Monkeys",
+  "artist": "Kevin MacLeod",
+  "artist_url": "https://incompetech.com/",
+  "license": "CC BY 3.0",
+  "license_url": "https://creativecommons.org/licenses/by/3.0/",
+  "source_url": "https://github.com/godotengine/godot-demo-projects/blob/master/audio/audio_effects/sfx/music_monkeys_spinning_monkeys.ogg",
+  "license_evidence_url": "https://github.com/godotengine/godot-demo-projects/blob/master/audio/audio_effects/README.md#music",
+  "sha256": "8a86cbbd438fb8647d3d82c3955a166f8f73acc6bea1dd07cdd14f8a2658469a",
+  "credit": "Monkeys Spinning Monkeys \u2014 Kevin MacLeod (incompetech.com)\nLicensed under Creative Commons Attribution 3.0\nhttps://creativecommons.org/licenses/by/3.0/\nMusic excerpt trimmed, faded and mixed beneath narration.\n",
+  "path": "assets/music/monkeys_spinning_monkeys.ogg"
+}

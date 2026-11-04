@@ -3,3 +3,9 @@ __pycache__/
 out/
 .blender/
 .models/
+output/
+.env
+*token*.json
+*secret*.json
+.venv/
+models/

@@ -1,0 +1,25 @@
+{
+  "episode": "bench_vise",
+  "video": "video.mp4",
+  "sha256": "ebad77ecf0a8947c3f2c3f804226b290a8f25cf6379c783cabfb4204b059faea",
+  "title": "How a bench vise turns rotation into clamping force #Shorts",
+  "description": "A procedural 3D explanation of a bench vise. One turn advances the moving jaw by the screw lead. Ideal work balance: 2*pi*torque = axial_force*lead. Real clamping force depends on friction and deformation. Kinematic illustration; arrows are schematic. No AI-generated visuals.\n\nMusic:\nMonkeys Spinning Monkeys \u2014 Kevin MacLeod (incompetech.com)\nLicensed under Creative Commons Attribution 3.0\nhttps://creativecommons.org/licenses/by/3.0/\nMusic excerpt trimmed, faded and mixed beneath narration.\n",
+  "language": "en",
+  "youtube": {
+    "channel_id": "",
+    "privacy": "private",
+    "category_id": "27",
+    "made_for_kids": false
+  },
+  "width": 1080,
+  "height": 1920,
+  "fps": "60/1",
+  "duration": 22.0,
+  "physics": {
+    "torque_nm": 1.3,
+    "ideal_axial_force_n": 2042.0352248333654,
+    "travel_m": 0.016
+  },
+  "status": "awaiting_review",
+  "preview": false
+}
