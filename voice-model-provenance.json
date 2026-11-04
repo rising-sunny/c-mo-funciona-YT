@@ -1,0 +1,12 @@
+{
+  "archive": "ljspeech.tar.bz2",
+  "archive_sha256": "00c6408d2409050312193b0d40ae07fde28af7d3d45a56efcc55440db516b935",
+  "model": "en_US-ljspeech-high.onnx",
+  "model_sha256": "fea8faae21240174e972568a004f1d7afb01a93dbc7b3a58c36ecdc1bae82e33",
+  "kokoro": {
+    "url": "https://github.com/k2-fsa/sherpa-onnx/releases/download/tts-models/kokoro-en-v0_19.tar.bz2",
+    "model_sha256": "10ff414106a038ce7e9e0126c6461e4dc8a86efaa89dc91d2009d69fe635e339",
+    "speaker_id": 1,
+    "voice": "af_bella"
+  }
+}

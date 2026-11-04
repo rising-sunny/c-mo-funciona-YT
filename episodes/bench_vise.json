@@ -1,0 +1,330 @@
+{
+  "id": "bench_vise",
+  "language": "en",
+  "title": "How a bench vise turns rotation into clamping force #Shorts",
+  "description": "A procedural 3D explanation of a bench vise. One turn advances the moving jaw by the screw lead. Ideal work balance: 2*pi*torque = axial_force*lead. Real clamping force depends on friction and deformation. Kinematic illustration; arrows are schematic. No AI-generated visuals.\n\nMusic:\nMonkeys Spinning Monkeys — Kevin MacLeod (incompetech.com)\nLicensed under Creative Commons Attribution 3.0\nhttps://creativecommons.org/licenses/by/3.0/\nMusic excerpt trimmed, faded and mixed beneath narration.\n",
+  "duration": 22,
+  "fps": 60,
+  "width": 1080,
+  "height": 1920,
+  "physics": {
+    "lead_m": 0.004,
+    "handle_radius_m": 0.065,
+    "hand_force_n": 20,
+    "turns": 4
+  },
+  "captions": [
+    [
+      0,
+      3.5,
+      "A bench vise: built to hold tight"
+    ],
+    [
+      3.5,
+      6,
+      "Look closer at the gripping faces"
+    ],
+    [
+      6,
+      10,
+      "A turning screw drives the moving jaw"
+    ],
+    [
+      10,
+      14,
+      "Push the handle to create torque"
+    ],
+    [
+      14,
+      19,
+      "Watch the gap close"
+    ],
+    [
+      19,
+      22,
+      "Rotation becomes linear motion"
+    ]
+  ],
+  "youtube": {
+    "channel_id": "",
+    "privacy": "private",
+    "category_id": "27",
+    "made_for_kids": false
+  },
+  "contact_time": 19,
+  "preview": {
+    "width": 450,
+    "height": 800,
+    "fps": 16
+  },
+  "shots": [
+    {
+      "id": "overview",
+      "start": 0,
+      "end": 3.5,
+      "camera": [
+        0.39,
+        -0.59,
+        0.4
+      ],
+      "target": [
+        -0.015,
+        0,
+        0.104
+      ],
+      "scale": 0.72,
+      "dolly": [
+        -0.025,
+        0.015,
+        0
+      ],
+      "label": "01 / MEET THE BENCH VISE",
+      "detail": "Fixed jaw / moving jaw / T-handle",
+      "end_scale": 0.57,
+      "orbit_deg": 22,
+      "rise_deg": 3
+    },
+    {
+      "id": "texture",
+      "start": 3.5,
+      "end": 6,
+      "camera": [
+        0.12,
+        -0.15,
+        0.25
+      ],
+      "target": [
+        -0.0785,
+        -0.012,
+        0.158
+      ],
+      "target_shift": [
+        0,
+        0.014,
+        0
+      ],
+      "scale": 0.265,
+      "end_scale": 0.2,
+      "orbit_deg": 20,
+      "rise_deg": -3,
+      "label": "02 / MACHINED GRIP FACES",
+      "detail": "Detail view | Replaceable crosshatched steel insert"
+    },
+    {
+      "id": "thread",
+      "start": 6,
+      "end": 10,
+      "camera": [
+        0.04,
+        -0.32,
+        0.17
+      ],
+      "target": [
+        -0.061,
+        0,
+        0.089
+      ],
+      "scale": 0.3,
+      "dolly": [
+        -0.025,
+        0,
+        0
+      ],
+      "label": "03 / THREADS INTO MOTION",
+      "detail": "Cutaway view | Lead: 4 mm per revolution",
+      "end_scale": 0.2,
+      "orbit_deg": -24,
+      "rise_deg": -5
+    },
+    {
+      "id": "handle",
+      "start": 10,
+      "end": 14,
+      "camera": [
+        0.4,
+        -0.33,
+        0.235
+      ],
+      "target": [
+        0.102,
+        0,
+        0.089
+      ],
+      "scale": 0.37,
+      "dolly": [
+        0,
+        0.025,
+        0
+      ],
+      "label": "04 / FORCE TO TORQUE",
+      "detail": "20 N x 0.065 m = 1.3 N m",
+      "end_scale": 0.28,
+      "orbit_deg": 26,
+      "rise_deg": 3
+    },
+    {
+      "id": "jaws",
+      "start": 14,
+      "end": 19,
+      "camera": [
+        0.19,
+        -0.37,
+        0.33
+      ],
+      "target": [
+        -0.05,
+        0,
+        0.157
+      ],
+      "scale": 0.34,
+      "dolly": [
+        -0.025,
+        0.015,
+        0.005
+      ],
+      "label": "05 / CLOSING THE GAP",
+      "detail": "The moving jaw stops at first contact",
+      "end_scale": 0.23,
+      "orbit_deg": -22,
+      "rise_deg": 6,
+      "target_shift": [
+        -0.004,
+        0,
+        0.003
+      ]
+    },
+    {
+      "id": "finish",
+      "start": 19,
+      "end": 22,
+      "camera": [
+        0.34,
+        -0.6,
+        0.36
+      ],
+      "target": [
+        -0.025,
+        0,
+        0.1
+      ],
+      "scale": 0.56,
+      "dolly": [
+        0.025,
+        0,
+        0.025
+      ],
+      "label": "06 / SMALL TURNS. FIRM GRIP.",
+      "detail": "Kinematic model | No friction or elastic loading",
+      "end_scale": 0.7,
+      "orbit_deg": -25,
+      "rise_deg": 3
+    }
+  ],
+  "revision": 6,
+  "narration": {
+    "engine": "kokoro",
+    "model": "models/kokoro-en-v0_19",
+    "voice": "Kokoro af_bella",
+    "language": "en-US",
+    "segments": [
+      {
+        "start": 0.12,
+        "end": 3.3,
+        "text": "One tiny turn. One seriously strong grip!",
+        "speed": 1.02
+      },
+      {
+        "start": 3.62,
+        "end": 5.85,
+        "text": "Those teeth? They resist slipping.",
+        "speed": 1.06
+      },
+      {
+        "start": 6.12,
+        "end": 9.85,
+        "text": "Here’s the trick: one turn, four millimeters forward.",
+        "speed": 1.03
+      },
+      {
+        "start": 10.12,
+        "end": 13.85,
+        "text": "Push here... and you’ve got torque!",
+        "speed": 0.98
+      },
+      {
+        "start": 14.12,
+        "end": 15.95,
+        "text": "Watch that gap.",
+        "speed": 0.98
+      },
+      {
+        "start": 16.1,
+        "end": 17.65,
+        "text": "Almost there...",
+        "speed": 0.95
+      },
+      {
+        "start": 18.8,
+        "end": 19.55,
+        "text": "Contact!",
+        "speed": 1.02
+      },
+      {
+        "start": 19.65,
+        "end": 21.85,
+        "text": "And yes, friction matters too.",
+        "speed": 1.06
+      }
+    ],
+    "speaker_id": 1
+  },
+  "equations": [
+    {
+      "start": 6,
+      "end": 8.2,
+      "expression": "Δx = L·θ / (2π)",
+      "definition": "L: lead     θ: angle in radians"
+    },
+    {
+      "start": 8.2,
+      "end": 10,
+      "expression": "One turn → Δx = 4 mm",
+      "definition": "θ = 2π radians   |   L = 4 mm"
+    },
+    {
+      "start": 10,
+      "end": 12.2,
+      "expression": "τ = r·F",
+      "definition": "Perpendicular force at the handle"
+    },
+    {
+      "start": 12.2,
+      "end": 14,
+      "expression": "τ = 0.065 × 20 = 1.3 N·m",
+      "definition": "r = 0.065 m   |   F = 20 N"
+    },
+    {
+      "start": 14,
+      "end": 19,
+      "expression": "Δx = n·L",
+      "definition": "Total travel: 4 turns × 4 mm = 16 mm"
+    }
+  ],
+  "subtitle_style": "shorts",
+  "annotation_style": "flat",
+  "render_aa": "FXAA",
+  "music": {
+    "title": "Monkeys Spinning Monkeys",
+    "artist": "Kevin MacLeod",
+    "artist_url": "https://incompetech.com/",
+    "license": "CC BY 3.0",
+    "license_url": "https://creativecommons.org/licenses/by/3.0/",
+    "source_url": "https://github.com/godotengine/godot-demo-projects/blob/master/audio/audio_effects/sfx/music_monkeys_spinning_monkeys.ogg",
+    "license_evidence_url": "https://github.com/godotengine/godot-demo-projects/blob/master/audio/audio_effects/README.md#music",
+    "sha256": "8a86cbbd438fb8647d3d82c3955a166f8f73acc6bea1dd07cdd14f8a2658469a",
+    "credit": "Monkeys Spinning Monkeys — Kevin MacLeod (incompetech.com)\nLicensed under Creative Commons Attribution 3.0\nhttps://creativecommons.org/licenses/by/3.0/\nMusic excerpt trimmed, faded and mixed beneath narration.\n",
+    "path": "assets/music/monkeys_spinning_monkeys.ogg",
+    "start": 0,
+    "bed_lufs": -26
+  }
+}
