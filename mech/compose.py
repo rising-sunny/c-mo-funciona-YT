@@ -120,6 +120,7 @@ class Composer:
 
         d = ImageDraw.Draw(im, "RGBA")
         lf = font("SemiBold", self.S(40))
+        placed = []
         for lb in labels:
             if "hud" in lb:
                 hf = font("SemiBold", self.S(34))
@@ -139,7 +140,15 @@ class Composer:
             anchor = lb.get("anchor", "l")
             x0 = x - w - px * 2 if anchor == "r" else x
             x0 = min(max(x0, self.S(20)), self.W - w - px * 2 - self.S(20))
-            d.rounded_rectangle((x0, y - self.S(26) - py, x0 + w + px * 2, y + self.S(26) + py), radius=self.S(18), fill=(8, 14, 24, int(190 * lb["alpha"])))
+            rect = lambda yy: (x0, yy - self.S(26) - py, x0 + w + px * 2, yy + self.S(26) + py)
+            for _ in range(6):   # evita que una etiqueta tape a otra: se desplaza hacia arriba
+                rc = rect(y)
+                if any(not (rc[2] < q[0] or rc[0] > q[2] or rc[3] < q[1] or rc[1] > q[3]) for q in placed):
+                    y -= self.S(62)
+                else:
+                    break
+            placed.append(rect(y))
+            d.rounded_rectangle(rect(y), radius=self.S(18), fill=(8, 14, 24, int(190 * lb["alpha"])))
             d.text((x0 + px, y), lb["text"], font=lf, fill=col + (al,), anchor="lm")
 
         # barra de progreso
