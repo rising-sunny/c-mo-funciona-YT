@@ -292,3 +292,16 @@ Caption overlays are cached against their measured voice cues and output profile
 
 Voice model weights, virtual environments and intermediate render frames are
 excluded from Git. Model provenance and setup instructions are preserved above.
+
+## Episode 2: hydraulic syringes
+
+The second implemented mechanism is a pair of connected syringes. See
+[the episode notes](docs/hydraulic-syringes.md) for the physical assumptions,
+OpenStax reference, equations and reproduction commands.
+
+```bash
+python pipeline.py render --episode episodes/hydraulic_syringes.json
+```
+
+The system now selects the correct SI model and procedural scene per episode.
+The original bench-vise implementation and its delivered video are retained.

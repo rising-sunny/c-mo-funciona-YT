@@ -1,0 +1,339 @@
+{
+  "id": "hydraulic_syringes",
+  "mechanism": "hydraulic_syringes",
+  "scene_script": "hydraulic_scene.py",
+  "language": "en",
+  "revision": 1,
+  "title": "Can a small push lift a bigger load? Hydraulic syringes #Shorts",
+  "description": "Two connected syringes reveal Pascal’s principle. Ideal area ratio 4:1: 10 N produces 40 N, while 80 mm of input travel gives 20 mm at the larger piston. Work remains 0.8 J. Quasi-static, air-free incompressible-fluid model; friction, leakage, piston weight and hydrostatic head differences are omitted. This is a calculated kinematic visualization, not a CFD simulation. Cutaway barrels; flow cues are schematic.\n\nMusic:\nMonkeys Spinning Monkeys — Kevin MacLeod (incompetech.com)\nLicensed under Creative Commons Attribution 3.0\nhttps://creativecommons.org/licenses/by/3.0/\nMusic excerpt trimmed, faded and mixed beneath narration.\n\n\nPhysics reference: OpenStax, College Physics, Pascal’s Principle.\nhttps://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42193/index.cnxml",
+  "duration": 28,
+  "fps": 60,
+  "width": 1080,
+  "height": 1920,
+  "render_aa": "FXAA",
+  "preview": {
+    "width": 450,
+    "height": 800,
+    "fps": 16
+  },
+  "physics": {
+    "input_area_m2": 0.0005,
+    "output_area_m2": 0.002,
+    "input_force_n": 10,
+    "input_stroke_m": 0.08
+  },
+  "contact_time": 21,
+  "motion_start": 4,
+  "motion_end": 21,
+  "shots": [
+    {
+      "id": "overview",
+      "start": 0,
+      "end": 4,
+      "camera": [
+        0.33,
+        -0.65,
+        0.4
+      ],
+      "target": [
+        0,
+        0,
+        0.135
+      ],
+      "scale": 0.62,
+      "end_scale": 0.54,
+      "orbit_deg": 14,
+      "rise_deg": 3,
+      "label": "01 / A SMALL PUSH",
+      "detail": "Cutaway view · ideal, air-free liquid"
+    },
+    {
+      "id": "input",
+      "start": 4,
+      "end": 8,
+      "camera": [
+        0.06,
+        -0.4,
+        0.25
+      ],
+      "target": [
+        -0.085,
+        0,
+        0.175
+      ],
+      "scale": 0.36,
+      "end_scale": 0.31,
+      "orbit_deg": -15,
+      "rise_deg": 2,
+      "label": "02 / PRESSURE IN THE LIQUID",
+      "detail": "Cutaway view · ideal, air-free liquid"
+    },
+    {
+      "id": "areas",
+      "start": 8,
+      "end": 12,
+      "camera": [
+        0.15,
+        -0.26,
+        0.48
+      ],
+      "target": [
+        0,
+        0,
+        0.105
+      ],
+      "scale": 0.48,
+      "end_scale": 0.38,
+      "orbit_deg": 12,
+      "rise_deg": 7,
+      "label": "03 / FOUR TIMES THE AREA",
+      "detail": "Cutaway view · ideal, air-free liquid"
+    },
+    {
+      "id": "output",
+      "start": 12,
+      "end": 16,
+      "camera": [
+        0.32,
+        -0.4,
+        0.31
+      ],
+      "target": [
+        0.085,
+        0,
+        0.145
+      ],
+      "scale": 0.4,
+      "end_scale": 0.34,
+      "orbit_deg": -15,
+      "rise_deg": 2,
+      "label": "04 / FOUR TIMES THE FORCE",
+      "detail": "Cutaway view · ideal, air-free liquid"
+    },
+    {
+      "id": "travel",
+      "start": 16,
+      "end": 21,
+      "camera": [
+        0.18,
+        -0.63,
+        0.33
+      ],
+      "target": [
+        0,
+        0,
+        0.14
+      ],
+      "scale": 0.51,
+      "end_scale": 0.46,
+      "orbit_deg": -12,
+      "rise_deg": 1,
+      "label": "05 / THE TRADE-OFF",
+      "detail": "Cutaway view · ideal, air-free liquid"
+    },
+    {
+      "id": "energy",
+      "start": 21,
+      "end": 25,
+      "camera": [
+        0.27,
+        -0.58,
+        0.35
+      ],
+      "target": [
+        0,
+        0,
+        0.12
+      ],
+      "scale": 0.46,
+      "end_scale": 0.53,
+      "orbit_deg": 15,
+      "rise_deg": 3,
+      "label": "06 / NO FREE ENERGY",
+      "detail": "Cutaway view · ideal, air-free liquid"
+    },
+    {
+      "id": "finish",
+      "start": 25,
+      "end": 28,
+      "camera": [
+        0.22,
+        -0.63,
+        0.32
+      ],
+      "target": [
+        0,
+        0,
+        0.135
+      ],
+      "scale": 0.53,
+      "end_scale": 0.59,
+      "orbit_deg": -10,
+      "rise_deg": 1,
+      "label": "THE PHYSICS WITHIN",
+      "detail": "Cutaway view · ideal, air-free liquid"
+    }
+  ],
+  "captions": [
+    [
+      0,
+      4,
+      "Can a small push lift a bigger load?"
+    ],
+    [
+      4,
+      8,
+      "Pressure carries the push"
+    ],
+    [
+      8,
+      12,
+      "A larger piston has more area"
+    ],
+    [
+      12,
+      16,
+      "Same pressure. More force."
+    ],
+    [
+      16,
+      21,
+      "But there is a trade-off"
+    ],
+    [
+      21,
+      25,
+      "Energy is conserved"
+    ],
+    [
+      25,
+      28,
+      "Small push. Bigger lift."
+    ]
+  ],
+  "narration": {
+    "engine": "kokoro",
+    "model": "models/kokoro-en-v0_19",
+    "voice": "Kokoro af_bella",
+    "language": "en-US",
+    "segments": [
+      {
+        "start": 0.15,
+        "end": 3.8,
+        "text": "Can a tiny push lift a bigger load?",
+        "speed": 1.03
+      },
+      {
+        "start": 4.15,
+        "end": 7.8,
+        "text": "Push here. The liquid transmits pressure.",
+        "speed": 1.03
+      },
+      {
+        "start": 8.15,
+        "end": 11.8,
+        "text": "This piston has four times the area.",
+        "speed": 1.03
+      },
+      {
+        "start": 12.15,
+        "end": 15.8,
+        "text": "Same pressure. Four times the force!",
+        "speed": 1.03
+      },
+      {
+        "start": 16.15,
+        "end": 20.8,
+        "text": "But watch! It moves only one quarter as far.",
+        "speed": 1.03
+      },
+      {
+        "start": 21.15,
+        "end": 24.8,
+        "text": "More force. Less distance. No free energy.",
+        "speed": 1.03
+      },
+      {
+        "start": 25.15,
+        "end": 27.8,
+        "text": "That’s hydraulics. Pretty clever, right?",
+        "speed": 1.03
+      }
+    ],
+    "speaker_id": 1
+  },
+  "equations": [
+    {
+      "start": 4,
+      "end": 8,
+      "expression": "p = F₁ / A₁",
+      "definition": "Same added pressure throughout the fluid"
+    },
+    {
+      "start": 8,
+      "end": 12,
+      "expression": "A₂ = 4·A₁",
+      "definition": "Two times the radius → four times the area"
+    },
+    {
+      "start": 12,
+      "end": 14,
+      "expression": "F₁/A₁ = F₂/A₂",
+      "definition": "Pascal’s principle · ideal conditions"
+    },
+    {
+      "start": 14,
+      "end": 16,
+      "expression": "F₂ = 4 × 10 = 40 N",
+      "definition": "Force acts on the larger piston"
+    },
+    {
+      "start": 16,
+      "end": 19,
+      "expression": "A₁·Δx₁ = A₂·Δx₂",
+      "definition": "The displaced volumes must match"
+    },
+    {
+      "start": 19,
+      "end": 21,
+      "expression": "80 mm in → 20 mm out",
+      "definition": "More force, less distance"
+    },
+    {
+      "start": 21,
+      "end": 25,
+      "expression": "10 × 0.08 = 40 × 0.02",
+      "definition": "Ideal input work = output work = 0.8 J"
+    }
+  ],
+  "subtitle_style": "shorts",
+  "annotation_style": "hydraulic_flat",
+  "model_note": "Ideal fluid · friction and height effects omitted",
+  "music": {
+    "title": "Monkeys Spinning Monkeys",
+    "artist": "Kevin MacLeod",
+    "artist_url": "https://incompetech.com/",
+    "license": "CC BY 3.0",
+    "license_url": "https://creativecommons.org/licenses/by/3.0/",
+    "source_url": "https://github.com/godotengine/godot-demo-projects/blob/master/audio/audio_effects/sfx/music_monkeys_spinning_monkeys.ogg",
+    "license_evidence_url": "https://github.com/godotengine/godot-demo-projects/blob/master/audio/audio_effects/README.md#music",
+    "sha256": "8a86cbbd438fb8647d3d82c3955a166f8f73acc6bea1dd07cdd14f8a2658469a",
+    "credit": "Monkeys Spinning Monkeys — Kevin MacLeod (incompetech.com)\nLicensed under Creative Commons Attribution 3.0\nhttps://creativecommons.org/licenses/by/3.0/\nMusic excerpt trimmed, faded and mixed beneath narration.\n",
+    "path": "assets/music/monkeys_spinning_monkeys.ogg",
+    "start": 15,
+    "bed_lufs": -26
+  },
+  "youtube": {
+    "channel_id": "",
+    "privacy": "private",
+    "category_id": "27",
+    "made_for_kids": false
+  },
+  "png_compression": 0,
+  "references": [
+    {
+      "title": "OpenStax College Physics — Pascal’s Principle",
+      "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42193/index.cnxml"
+    }
+  ]
+}

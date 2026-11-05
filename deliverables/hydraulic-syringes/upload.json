@@ -1,0 +1,29 @@
+{
+  "episode": "hydraulic_syringes",
+  "video": "video.mp4",
+  "sha256": "e189622a4c36eb4ef45e886d36d65bc792f6dceca69f879efa81531a191c7b57",
+  "title": "Can a small push lift a bigger load? Hydraulic syringes #Shorts",
+  "description": "Two connected syringes reveal Pascal\u2019s principle. Ideal area ratio 4:1: 10 N produces 40 N, while 80 mm of input travel gives 20 mm at the larger piston. Work remains 0.8 J. Quasi-static, air-free incompressible-fluid model; friction, leakage, piston weight and hydrostatic head differences are omitted. This is a calculated kinematic visualization, not a CFD simulation. Cutaway barrels; flow cues are schematic.\n\nMusic:\nMonkeys Spinning Monkeys \u2014 Kevin MacLeod (incompetech.com)\nLicensed under Creative Commons Attribution 3.0\nhttps://creativecommons.org/licenses/by/3.0/\nMusic excerpt trimmed, faded and mixed beneath narration.\n\n\nPhysics reference: OpenStax, College Physics, Pascal\u2019s Principle.\nhttps://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42193/index.cnxml",
+  "language": "en",
+  "youtube": {
+    "channel_id": "",
+    "privacy": "private",
+    "category_id": "27",
+    "made_for_kids": false
+  },
+  "width": 1080,
+  "height": 1920,
+  "fps": "60/1",
+  "duration": 28.0,
+  "physics": {
+    "area_ratio": 4.0,
+    "gauge_pressure_pa": 20000.0,
+    "output_force_n": 40.0,
+    "output_stroke_m": 0.02,
+    "transferred_volume_m3": 4e-05,
+    "input_work_j": 0.8,
+    "output_work_j": 0.8
+  },
+  "status": "awaiting_review",
+  "preview": false
+}

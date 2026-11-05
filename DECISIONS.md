@@ -112,3 +112,19 @@
   habituales de escritorio/móvil y evitando la zona inferior del avatar.
 - PNG listos para subir, SVG y kit ZIP en branding/the-physics-within/facebook.
 - Las vistas de dispositivo son aproximadas; no se ha modificado Facebook.
+
+## Episodio 2: jeringas hidráulicas
+
+- Usuario confirmó la propuesta de jeringas hidráulicas para el segundo Short.
+- Dos cuerpos con corte visible, líquido y tubo cerrado, émbolos acoplados y carga.
+- Áreas 5 y 20 cm², fuerzas ideales 10 y 40 N, recorridos 80 y 20 mm.
+- Se conservan volumen desplazado (40 mL) y trabajo ideal (0.8 J).
+- Hipótesis explícitas: sin aire, fricción, fugas ni efectos de altura.
+- Modelo contrastado con OpenStax, Pascal’s Principle, módulo m42193.
+- Siete planos, 28 segundos, inglés, voz Kokoro y subtítulos cortos; 1080p60.
+- Mismo estilo de flechas planas y música con créditos y bajada bajo la voz.
+- Se corrigió una regresión en la agrupación de subtítulos con palabras finales
+  aisladas; se añadieron pruebas del modelo hidráulico y de subtítulos.
+- No se ha subido ni publicado el episodio.
+
+- Episodio 2 terminado: 1680 fotogramas nativos, audio estéreo, SRT y overlays verificados; copia final en deliverables/hydraulic-syringes.

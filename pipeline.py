@@ -9,7 +9,12 @@ import shutil
 import subprocess
 import sys
 import textwrap
-from physics import quantities
+from physics import quantities as screw_quantities
+from hydraulics import quantities as hydraulic_quantities
+
+def episode_quantities(c):
+    if c.get("mechanism")=="hydraulic_syringes": return hydraulic_quantities(c["physics"])
+    return screw_quantities(c["physics"])
 
 ROOT = Path(__file__).resolve().parent
 
@@ -20,7 +25,7 @@ def run(args, **kwargs):
 
 def load(path):
     c = json.loads(path.read_text())
-    quantities(c['physics'])
+    episode_quantities(c)
     if not c['id'].replace('_', '').isalnum() or c['language'] != 'en':
         raise ValueError('Use a simple episode id and English for this pilot')
     for key in ('width', 'height', 'fps'):
@@ -95,7 +100,7 @@ def package(config, out):
                 'width': stream['width'], 'height': stream['height'],
                 'fps': stream['r_frame_rate'],
                 'duration': float(probe['format']['duration']),
-                'physics': quantities(c['physics']), 'status': 'awaiting_review',
+                'physics': episode_quantities(c), 'status': 'awaiting_review',
                 'preview': stream['width'] != c['width'] or stream['height'] != c['height']}
     (out/'upload.json').write_text(json.dumps(manifest, indent=2)+'\n')
     print(f'Validated package: {out}/upload.json (no upload performed)')
@@ -112,7 +117,7 @@ def render(config, preview):
     if frames.exists():
         shutil.rmtree(frames)
     command = ['blender', '--background', '--threads', '4', '--python-exit-code', '1',
-               '--python', ROOT/'scene.py', '--', '--config', out/'episode.json', '--output', out]
+               '--python', ROOT/c.get('scene_script','scene.py'), '--', '--config', out/'episode.json', '--output', out]
     if preview:
         command.append('--preview')
     with (out/'render.log').open('w') as log:
@@ -130,6 +135,8 @@ def render(config, preview):
         run([sys.executable,ROOT/'arrow_graphics.py','--directory',study,'--source',out,'--raw-only'])
         for path in (study/'annotated').glob('*.png'):
             shutil.copy2(path,out/'frames'/path.name)
+    if c.get('annotation_style')=='hydraulic_flat':
+        run([sys.executable,ROOT/'hydraulic_graphics.py','--output',out])
     assemble(c, out, preview)
 
 
@@ -185,7 +192,7 @@ def assemble(c, out, preview):
             layers.append(f"drawtext=fontfile={font}:textfile=subtitle-{i}.txt:"
                           f"fontsize={max(13,round(width*.040))}:fontcolor=white:line_spacing=6:"
                           f"x=(w-tw)/2:y=h*0.815:enable='gte(t,{start})*lt(t,{end})'")
-    (out/'model-note.txt').write_text('Idealized motion | Schematic force arrows')
+    (out/'model-note.txt').write_text(c.get('model_note','Idealized motion | Schematic force arrows'))
     layers.append(f"drawtext=fontfile={font}:textfile=model-note.txt:"
                   f"fontsize={max(10,round(width*.023))}:fontcolor=0xA8B6C5:x=(w-tw)/2:y=h*0.94"
                   +(f":enable='lt(t,{c['duration']-3})'" if c.get('music',{}).get('path') else ''))
@@ -207,9 +214,13 @@ def assemble(c, out, preview):
         shutil.copy2(out/'screen-titles.srt',out/'captions.srt')
     if narrated and c.get('subtitle_style')=='shorts':
         run([sys.executable,ROOT/'shorts_captions.py','--episode',out/'episode.json','--output',out,'--profile','preview' if preview else 'final'])
-        command+=['-framerate',fps,'-i','shorts-captions/%04d.png',
-                  '-filter_complex',f'[0:v]{filters}[base];[base][3:v]overlay=0:0:format=auto[v]',
-                  '-map','[v]']
+        command+=['-framerate',fps,'-i','shorts-captions/%04d.png']
+        if c.get('annotation_style')=='hydraulic_flat':
+            command+=['-framerate',fps,'-i','hydraulic-overlays/%04d.png']
+            graph=f'[0:v][4:v]overlay=0:0:format=auto[scene];[scene]{filters}[base];[base][3:v]overlay=0:0:format=auto[v]'
+        else:
+            graph=f'[0:v]{filters}[base];[base][3:v]overlay=0:0:format=auto[v]'
+        command+=['-filter_complex',graph,'-map','[v]']
     else:
         command+=['-vf',filters,'-map','0:v:0']
     if narrated:
@@ -242,7 +253,7 @@ def main():
         for binary in ('blender', 'ffmpeg', 'ffprobe'):
             print(binary, shutil.which(binary) or 'MISSING')
         c = load(a.episode)
-        print('Ideal quantities (SI):', quantities(c['physics']))
+        print('Ideal quantities (SI):', episode_quantities(c))
         print('YouTube: offline; no upload attempted')
     elif a.command == 'render':
         render(a.episode.resolve(), a.preview)
