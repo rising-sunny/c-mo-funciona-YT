@@ -305,3 +305,14 @@ python pipeline.py render --episode episodes/hydraulic_syringes.json
 
 The system now selects the correct SI model and procedural scene per episode.
 The original bench-vise implementation and its delivered video are retained.
+
+## Episode 3: self-interrupting electric bell
+
+The third episode combines a modeled coil, interrupter contact, armature,
+hammer and return spring. All force, field and current annotations are independent
+2D graphics composited outside Blender. See [the episode notes](docs/electric-bell.md)
+for assumptions, references, timing, sound and reproduction commands.
+
+```bash
+python pipeline.py render --episode episodes/electric_bell.json
+```

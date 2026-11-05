@@ -13,6 +13,7 @@ def mix(config,out):
     c=load(config);music=c['music'];track=ROOT/music['path']
     if digest(track)!=music['sha256']:raise ValueError('Music provenance hash mismatch')
     duration=c['duration'];fade=duration-1.2
+    has_fx=bool(c.get('sound_effects',{}).get('path'))
     graph=(f"[1:a]atrim=start={music.get('start',0)}:duration={duration},asetpts=PTS-STARTPTS,"
            f"loudnorm=I={music.get('bed_lufs',-26)}:TP=-4:LRA=7,aresample=48000,"
            f"afade=t=in:d=0.35,afade=t=out:st={fade}:d=1.2[bed];"
@@ -20,7 +21,11 @@ def mix(config,out):
            "[bed][detector]sidechaincompress=threshold=0.025:ratio=5:attack=15:release=300:knee=2[ducked];"
            "[voice][ducked]amix=inputs=2:duration=first:normalize=0,"
            "loudnorm=I=-16:TP=-1.5:LRA=7:print_format=json,aresample=48000[mix]")
-    result=subprocess.run(['ffmpeg','-y','-hide_banner','-i',str(out/'narration.wav'),'-i',str(track),
+    if has_fx:
+        graph=graph.replace('[voice][ducked]amix=inputs=2','[2:a]aresample=48000,aformat=channel_layouts=stereo[fx];[voice][ducked][fx]amix=inputs=3')
+    inputs=['-i',str(out/'narration.wav'),'-i',str(track)]
+    if has_fx:inputs+=['-i',str(out/c['sound_effects']['path'])]
+    result=subprocess.run(['ffmpeg','-y','-hide_banner']+inputs+[
                            '-filter_complex',graph,'-map','[mix]','-t',str(duration),
                            '-c:a','pcm_s24le',str(out/'soundtrack.wav')],capture_output=True,text=True)
     if result.returncode:raise RuntimeError(result.stderr[-2500:])

@@ -128,3 +128,21 @@
 - No se ha subido ni publicado el episodio.
 
 - Episodio 2 terminado: 1680 fotogramas nativos, audio estéreo, SRT y overlays verificados; copia final en deliverables/hydraulic-syringes.
+
+## Episodio 3: timbre electromagnético
+
+- Usuario aprobó un timbre clásico con contacto auto-interruptor.
+- Ocho planos, 30 s, inglés y 1080p60 nativos; narración y subtítulos de la serie.
+- Modelo acoplado de corriente inductiva, armadura, resorte, contacto y golpe.
+- Secuencia revisada: la corriente no desaparece instantáneamente al abrir.
+- El golpe conserva inercia tras el corte; el resorte permite volver a cerrar.
+- Usuario reiteró que las flechas no deben formar parte del render 3D.
+- Se eliminaron también las líneas de campo de la escena: fuerzas, campo,
+  corriente y llamadas se dibujan en capas 2D transparentes independientes.
+- La escena guardada se verifica para asegurar que no contiene mallas de anotación.
+- Modelo ilustrativo, no calibrado con un timbre comercial; tiempos ampliados,
+  contacto y descarga inductiva simplificados, hipótesis documentadas.
+- Sonidos originales sintetizados y alineados a nueve impactos mostrados.
+- No se ha publicado en YouTube ni Facebook.
+
+- Episodio 3 terminado y verificado: 1800 fotogramas nativos, ocho frases, nueve golpes sincronizados y gráficos 2D independientes; entregable en deliverables/electric-bell.

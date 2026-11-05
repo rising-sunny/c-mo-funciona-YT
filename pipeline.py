@@ -11,8 +11,10 @@ import sys
 import textwrap
 from physics import quantities as screw_quantities
 from hydraulics import quantities as hydraulic_quantities
+from bell_physics import quantities as bell_quantities
 
 def episode_quantities(c):
+    if c.get("mechanism")=="electric_bell": return bell_quantities(c["physics"])
     if c.get("mechanism")=="hydraulic_syringes": return hydraulic_quantities(c["physics"])
     return screw_quantities(c["physics"])
 
@@ -137,6 +139,9 @@ def render(config, preview):
             shutil.copy2(path,out/'frames'/path.name)
     if c.get('annotation_style')=='hydraulic_flat':
         run([sys.executable,ROOT/'hydraulic_graphics.py','--output',out])
+    if c.get('annotation_style')=='bell_flat':
+        run([sys.executable,ROOT/'bell_graphics.py','--output',out])
+        run([ROOT/'.venv/bin/python',ROOT/'bell_sound.py','--episode',out/'episode.json','--output',out])
     assemble(c, out, preview)
 
 
@@ -215,8 +220,9 @@ def assemble(c, out, preview):
     if narrated and c.get('subtitle_style')=='shorts':
         run([sys.executable,ROOT/'shorts_captions.py','--episode',out/'episode.json','--output',out,'--profile','preview' if preview else 'final'])
         command+=['-framerate',fps,'-i','shorts-captions/%04d.png']
-        if c.get('annotation_style')=='hydraulic_flat':
-            command+=['-framerate',fps,'-i','hydraulic-overlays/%04d.png']
+        if c.get('annotation_style') in ('hydraulic_flat','bell_flat'):
+            overlay_dir='bell-overlays' if c['annotation_style']=='bell_flat' else 'hydraulic-overlays'
+            command+=['-framerate',fps,'-i',overlay_dir+'/%04d.png']
             graph=f'[0:v][4:v]overlay=0:0:format=auto[scene];[scene]{filters}[base];[base][3:v]overlay=0:0:format=auto[v]'
         else:
             graph=f'[0:v]{filters}[base];[base][3:v]overlay=0:0:format=auto[v]'

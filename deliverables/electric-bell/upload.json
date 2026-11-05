@@ -1,0 +1,25 @@
+{
+  "episode": "electric_bell",
+  "video": "video.mp4",
+  "sha256": "11a894aa7f1df98043b47c63d50ba3fb4b6eec4ba9b374de9d62271e10e4b2fc",
+  "title": "Why doesn\u2019t this electric bell ring just once? #Shorts",
+  "description": "A classic self-interrupting electromagnetic bell: holding the button supplies the coil, the armature moves and opens its own contact, current and magnetic pull decay, and the spring returns the armature to reclose the circuit. A battery supplies every cycle. This is an illustrative lumped model, not a measured commercial bell. Simplified translating armature, linear unsaturated magnetic material, ideal hysteretic contact and impact restitution. Open-contact inductive energy dissipates through an effective transient path; arc/contact-bounce details and full 3D field effects are omitted. Time is expanded and replayed for explanation; field lines are schematic.\n\nMusic:\nMonkeys Spinning Monkeys \u2014 Kevin MacLeod (incompetech.com)\nLicensed under Creative Commons Attribution 3.0\nhttps://creativecommons.org/licenses/by/3.0/\nMusic excerpt trimmed, faded and mixed beneath narration.\n\n\nPhysics references: OpenStax College Physics \u2014 magnetic fields, RL circuits and Hooke\u2019s law.\nhttps://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42382/index.cnxml\nhttps://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42425/index.cnxml\nhttps://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42240/index.cnxml",
+  "language": "en",
+  "youtube": {
+    "channel_id": "",
+    "privacy": "private",
+    "category_id": "27",
+    "made_for_kids": false
+  },
+  "width": 1080,
+  "height": 1920,
+  "fps": "60/1",
+  "duration": 30.0,
+  "physics": {
+    "steady_current_a": 0.5,
+    "initial_inductance_h": 0.028333333333333335,
+    "max_spring_force_n": 0.105
+  },
+  "status": "awaiting_review",
+  "preview": false
+}

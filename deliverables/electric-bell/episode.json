@@ -1,0 +1,391 @@
+{
+  "id": "electric_bell",
+  "mechanism": "electric_bell",
+  "scene_script": "bell_scene.py",
+  "revision": 1,
+  "language": "en",
+  "title": "Why doesn’t this electric bell ring just once? #Shorts",
+  "description": "A classic self-interrupting electromagnetic bell: holding the button supplies the coil, the armature moves and opens its own contact, current and magnetic pull decay, and the spring returns the armature to reclose the circuit. A battery supplies every cycle. This is an illustrative lumped model, not a measured commercial bell. Simplified translating armature, linear unsaturated magnetic material, ideal hysteretic contact and impact restitution. Open-contact inductive energy dissipates through an effective transient path; arc/contact-bounce details and full 3D field effects are omitted. Time is expanded and replayed for explanation; field lines are schematic.\n\nMusic:\nMonkeys Spinning Monkeys — Kevin MacLeod (incompetech.com)\nLicensed under Creative Commons Attribution 3.0\nhttps://creativecommons.org/licenses/by/3.0/\nMusic excerpt trimmed, faded and mixed beneath narration.\n\n\nPhysics references: OpenStax College Physics — magnetic fields, RL circuits and Hooke’s law.\nhttps://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42382/index.cnxml\nhttps://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42425/index.cnxml\nhttps://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42240/index.cnxml",
+  "duration": 30,
+  "fps": 60,
+  "width": 1080,
+  "height": 1920,
+  "render_aa": "FXAA",
+  "png_compression": 0,
+  "preview": {
+    "width": 450,
+    "height": 800,
+    "fps": 16
+  },
+  "contact_time": 30,
+  "physics": {
+    "voltage_v": 6,
+    "resistance_ohm": 12,
+    "inductance_h": 0.015,
+    "magnetic_c_hm": 8e-05,
+    "initial_gap_m": 0.006,
+    "mass_kg": 0.025,
+    "spring_n_m": 30,
+    "damping_ns_m": 0.04,
+    "open_resistance_ohm": 200,
+    "stroke_m": 0.0035,
+    "open_at_m": 0.0028,
+    "close_at_m": 0.0009,
+    "restitution": 0.2
+  },
+  "shots": [
+    {
+      "id": "overview",
+      "start": 0,
+      "end": 3.5,
+      "camera": [
+        0.31,
+        -0.67,
+        0.38
+      ],
+      "target": [
+        -0.005,
+        0,
+        0.13
+      ],
+      "scale": 0.66,
+      "end_scale": 0.59,
+      "orbit_deg": 13,
+      "rise_deg": 2,
+      "label": "01 / WHY MORE THAN ONE RING?",
+      "detail": "Illustrative slow-motion model"
+    },
+    {
+      "id": "button",
+      "start": 3.5,
+      "end": 7,
+      "camera": [
+        0.27,
+        -0.4,
+        0.17
+      ],
+      "target": [
+        0.085,
+        -0.01,
+        0.035
+      ],
+      "scale": 0.3,
+      "end_scale": 0.235,
+      "orbit_deg": -14,
+      "rise_deg": 3,
+      "label": "02 / HOLD THE BUTTON",
+      "detail": "Illustrative slow-motion model"
+    },
+    {
+      "id": "coil",
+      "start": 7,
+      "end": 11,
+      "camera": [
+        0.065,
+        -0.36,
+        0.17
+      ],
+      "target": [
+        -0.028,
+        0,
+        0.079
+      ],
+      "scale": 0.23,
+      "end_scale": 0.18,
+      "orbit_deg": 15,
+      "rise_deg": 4,
+      "label": "03 / THE ELECTROMAGNET",
+      "detail": "Illustrative slow-motion model"
+    },
+    {
+      "id": "contact",
+      "start": 11,
+      "end": 15,
+      "camera": [
+        -0.046,
+        -0.27,
+        0.16
+      ],
+      "target": [
+        -0.095,
+        -0.01,
+        0.112
+      ],
+      "scale": 0.15,
+      "end_scale": 0.105,
+      "orbit_deg": -10,
+      "rise_deg": 4,
+      "label": "04 / THE TINY INTERRUPTER",
+      "detail": "Illustrative slow-motion model"
+    },
+    {
+      "id": "release",
+      "start": 15,
+      "end": 19,
+      "camera": [
+        0.16,
+        -0.4,
+        0.28
+      ],
+      "target": [
+        0.005,
+        0,
+        0.14
+      ],
+      "scale": 0.36,
+      "end_scale": 0.28,
+      "orbit_deg": -15,
+      "rise_deg": 2,
+      "label": "05 / THE PULL FADES",
+      "detail": "Illustrative slow-motion model"
+    },
+    {
+      "id": "spring",
+      "start": 19,
+      "end": 23,
+      "camera": [
+        -0.12,
+        -0.31,
+        0.15
+      ],
+      "target": [
+        -0.096,
+        0,
+        0.079
+      ],
+      "scale": 0.19,
+      "end_scale": 0.135,
+      "orbit_deg": 13,
+      "rise_deg": 3,
+      "label": "06 / THE SPRING RETURNS",
+      "detail": "Illustrative slow-motion model"
+    },
+    {
+      "id": "repeat",
+      "start": 23,
+      "end": 27,
+      "camera": [
+        0.25,
+        -0.65,
+        0.34
+      ],
+      "target": [
+        -0.005,
+        0,
+        0.13
+      ],
+      "scale": 0.61,
+      "end_scale": 0.56,
+      "orbit_deg": -15,
+      "rise_deg": 2,
+      "label": "07 / CLOSE. OPEN. REPEAT.",
+      "detail": "Illustrative slow-motion model"
+    },
+    {
+      "id": "finish",
+      "start": 27,
+      "end": 30,
+      "camera": [
+        0.28,
+        -0.67,
+        0.37
+      ],
+      "target": [
+        -0.005,
+        0,
+        0.13
+      ],
+      "scale": 0.57,
+      "end_scale": 0.66,
+      "orbit_deg": 10,
+      "rise_deg": 3,
+      "label": "THE PHYSICS WITHIN",
+      "detail": "Illustrative slow-motion model"
+    }
+  ],
+  "captions": [
+    [
+      0,
+      3.5,
+      "Why doesn’t it ring just once?"
+    ],
+    [
+      3.5,
+      7,
+      "Hold the button"
+    ],
+    [
+      7,
+      11,
+      "Current creates a magnetic field"
+    ],
+    [
+      11,
+      15,
+      "Movement opens the contact"
+    ],
+    [
+      15,
+      19,
+      "Current and magnetic pull fade"
+    ],
+    [
+      19,
+      23,
+      "The spring closes the contact"
+    ],
+    [
+      23,
+      27,
+      "The cycle repeats"
+    ],
+    [
+      27,
+      30,
+      "The battery powers every ring"
+    ]
+  ],
+  "narration": {
+    "engine": "kokoro",
+    "model": "models/kokoro-en-v0_19",
+    "voice": "Kokoro af_bella",
+    "language": "en-US",
+    "segments": [
+      {
+        "start": 0.12,
+        "end": 3.3,
+        "text": "Why doesn’t this bell ring just once?",
+        "speed": 1.01
+      },
+      {
+        "start": 3.65,
+        "end": 6.8,
+        "text": "Hold the button. Current flows through the coil.",
+        "speed": 1.01
+      },
+      {
+        "start": 7.15,
+        "end": 10.8,
+        "text": "The electromagnet pulls the armature and hammer.",
+        "speed": 1.01
+      },
+      {
+        "start": 11.15,
+        "end": 14.8,
+        "text": "But that movement opens this tiny contact!",
+        "speed": 1.01
+      },
+      {
+        "start": 15.15,
+        "end": 18.8,
+        "text": "The supply is cut. The magnetic pull fades.",
+        "speed": 1.01
+      },
+      {
+        "start": 19.15,
+        "end": 22.8,
+        "text": "The spring pulls back, closing the circuit again.",
+        "speed": 1.01
+      },
+      {
+        "start": 23.15,
+        "end": 26.8,
+        "text": "And it repeats while you hold the button.",
+        "speed": 1.01
+      },
+      {
+        "start": 27.12,
+        "end": 29.85,
+        "text": "Not free energy. The battery powers every ring.",
+        "speed": 1.01
+      }
+    ],
+    "speaker_id": 1
+  },
+  "equations": [
+    {
+      "start": 3.5,
+      "end": 7,
+      "expression": "Closed circuit → current",
+      "definition": "Battery and button supply the coil"
+    },
+    {
+      "start": 7,
+      "end": 11,
+      "expression": "B ∝ I",
+      "definition": "At fixed geometry, before core saturation"
+    },
+    {
+      "start": 11,
+      "end": 15,
+      "expression": "Contact opens → supply cut",
+      "definition": "The moving armature interrupts its own circuit"
+    },
+    {
+      "start": 15,
+      "end": 17,
+      "expression": "Current fades → pull weakens",
+      "definition": "The coil releases; the hammer keeps moving briefly"
+    },
+    {
+      "start": 17,
+      "end": 19,
+      "expression": "Momentum completes the strike",
+      "definition": "Impact makes the gong vibrate"
+    },
+    {
+      "start": 19,
+      "end": 23,
+      "expression": "Fₛ = −k·x",
+      "definition": "The restoring force opposes displacement"
+    },
+    {
+      "start": 23,
+      "end": 27,
+      "expression": "Close → pull → open → return",
+      "definition": "Self-interruption while the button is held"
+    }
+  ],
+  "annotation_style": "bell_flat",
+  "subtitle_style": "shorts",
+  "model_note": "Illustrative slow motion · field and contact details simplified",
+  "music": {
+    "title": "Monkeys Spinning Monkeys",
+    "artist": "Kevin MacLeod",
+    "artist_url": "https://incompetech.com/",
+    "license": "CC BY 3.0",
+    "license_url": "https://creativecommons.org/licenses/by/3.0/",
+    "source_url": "https://github.com/godotengine/godot-demo-projects/blob/master/audio/audio_effects/sfx/music_monkeys_spinning_monkeys.ogg",
+    "license_evidence_url": "https://github.com/godotengine/godot-demo-projects/blob/master/audio/audio_effects/README.md#music",
+    "sha256": "8a86cbbd438fb8647d3d82c3955a166f8f73acc6bea1dd07cdd14f8a2658469a",
+    "credit": "Monkeys Spinning Monkeys — Kevin MacLeod (incompetech.com)\nLicensed under Creative Commons Attribution 3.0\nhttps://creativecommons.org/licenses/by/3.0/\nMusic excerpt trimmed, faded and mixed beneath narration.\n",
+    "path": "assets/music/monkeys_spinning_monkeys.ogg",
+    "start": 40,
+    "bed_lufs": -26
+  },
+  "youtube": {
+    "channel_id": "",
+    "privacy": "private",
+    "category_id": "27",
+    "made_for_kids": false
+  },
+  "sound_effects": {
+    "generator": "bell_sound.py",
+    "path": "bell-strikes.wav",
+    "description": "Procedural bell resonances aligned to displayed impacts"
+  },
+  "references": [
+    {
+      "title": "Magnetic fields produced by currents",
+      "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42382/index.cnxml"
+    },
+    {
+      "title": "RL circuits",
+      "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42425/index.cnxml"
+    },
+    {
+      "title": "Hooke’s law",
+      "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42240/index.cnxml"
+    }
+  ]
+}

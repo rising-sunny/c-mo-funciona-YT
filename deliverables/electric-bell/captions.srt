@@ -1,0 +1,31 @@
+1
+00:00:00,120 --> 00:00:01,941
+Why doesn’t this bell ring just once?
+
+2
+00:00:03,650 --> 00:00:05,838
+Hold the button. Current flows through the coil.
+
+3
+00:00:07,150 --> 00:00:09,747
+The electromagnet pulls the armature and hammer.
+
+4
+00:00:11,150 --> 00:00:13,570
+But that movement opens this tiny contact!
+
+5
+00:00:15,150 --> 00:00:17,662
+The supply is cut. The magnetic pull fades.
+
+6
+00:00:19,150 --> 00:00:21,469
+The spring pulls back, closing the circuit again.
+
+7
+00:00:23,150 --> 00:00:24,874
+And it repeats while you hold the button.
+
+8
+00:00:27,120 --> 00:00:29,845
+Not free energy. The battery powers every ring.
