@@ -1,0 +1,14 @@
+SUBIR A SHEEPIT
+
+Archivo: The_Physics_Within_Differential_SheepIt.blend
+Creado con Blender 4.3.2; elegir una version compatible que SheepIt ofrezca.
+1080 x 1920 nativo, 24 fps, fotogramas 1-1152, Cycles, PNG RGB.
+96 muestras maximas adaptativas, minimo 16, umbral 0.035.
+Denoising OIDN integrado con albedo y normales.
+Sin recursos externos, simulaciones por hornear, scripts ni rutas absolutas de salida.
+
+Esta escena produce SOLO la animacion 3D. La narracion, musica, subtitulos y diagramas 2D se componen despues.
+Descargar la secuencia completa de PNG, conservando su orden y numeracion para el montaje posterior.
+
+No se ha subido nada a SheepIt ni se ha iniciado ningun render externo.
+El Blender de este entorno no incluye OIDN integrado: no se ha probado aqui el denoising de esta copia, que requiere una compilacion estandar de Blender con OIDN.

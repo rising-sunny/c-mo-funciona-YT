@@ -1,0 +1,21 @@
+{
+  "blender_version": "4.3.2",
+  "resolution": [
+    1080,
+    1920
+  ],
+  "fps": 24,
+  "frames": [
+    1,
+    1152
+  ],
+  "engine": "CYCLES",
+  "denoiser": "OPENIMAGEDENOISE",
+  "max_samples": 96,
+  "adaptive_threshold": 0.035,
+  "external_assets": 0,
+  "animation_baked": true,
+  "requires_python_scripts": false,
+  "contains": "3D animation only; English 2D overlays and audio are composed separately",
+  "sha256": "7817f10b19a9450570cd2f118530c5ab2b29b00759a6338f54e24ec7ba53682a"
+}
