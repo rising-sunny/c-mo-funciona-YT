@@ -1,0 +1,3 @@
+Texturas y HDRI de Poly Haven (polyhaven.com), licencia CC0, empaquetadas en motor_diesel_camion_v2_60fps.blend:
+metal_plate_02, blue_metal_plate, rust_coarse_01, brushed_concrete_03 (2K) y HDRI studio_small_08 (2K).
+https://polyhaven.com/license
